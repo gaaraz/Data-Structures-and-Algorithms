@@ -24,7 +24,8 @@ void destory(Node* head){
 }
 
 Node* insert(Node* head, int pos, int val){
-	Node new_head,*p = &new_head;
+	// 虚拟头节点,方便操作
+    Node new_head,*p = &new_head;
 	Node* node = initNode(val);
 	new_head.next = head;
 	for(int i=0;i<pos;i++){
@@ -35,7 +36,7 @@ Node* insert(Node* head, int pos, int val){
 	return new_head.next;
 }
 
-Node* insertWithHead(Node* head, int pos, int val){
+Node* insertWithOutHead(Node* head, int pos, int val){
 	Node* node = initNode(val);
 	if(pos == 0){
 		node->next = head;

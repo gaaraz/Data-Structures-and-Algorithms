@@ -35,7 +35,8 @@ int expend(vector* v){
 int insert(vector* v, int pos, int val){
 	if(pos < 0 || pos > v->count) return 0;
 	if(v->size == v->count && !expend(v)) return 0;
-
+    
+    //逆序遍历
 	for(int i=v->count - 1; i>=pos; i--){
 		v->data[i+1] = v->data[i];
 	}

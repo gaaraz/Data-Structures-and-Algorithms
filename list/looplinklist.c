@@ -17,11 +17,13 @@ Node* initNode(int val){
 void destory(Node* head){
 	if(head == NULL) return;
 
-	Node* p=head->next;
-    do{
-        free(p);
-        p = p->next;
-    }while(p != head->next);
+	Node* cur=head->next;
+    Node* next = NULL;
+    while(cur){
+        next = cur->next;
+        free(cur);
+        cur = next;
+    };
 
 	return;
 }
@@ -35,7 +37,7 @@ Node* insert(Node* head, int pos, int val){
 	for(int i=0;i<pos;i++){
 		p = p->next;
 	}
-	if(p == head){
+	if(p == head && pos != 0){
 		head = node;
 	}
 	node->next = p->next;
@@ -56,11 +58,11 @@ Node* removeOne(Node* head, int pos){
 }
 
 int contain(Node* head, int val){
-	Node* p = head;
-	while(p){
+	Node* p = head->next;
+	do{
 		if(p->data == val) return 1;
 		p = p->next;
-	}
+	}while(p != head->next);
 	return 0;
 }
 
