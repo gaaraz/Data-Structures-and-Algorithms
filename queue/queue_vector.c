@@ -65,7 +65,8 @@ int push(Queue* q, int val){
     if(q->count == q->size) return 0;
     insertVector(q->data, q->tail, val);
     q->tail += 1;
-    if(q->tail == q->size) q->tail = 0;
+    q->tail %= q->size;
+    //if(q->tail == q->size) q->tail = 0;
     q->count += 1;
     return 1;
 }
@@ -78,6 +79,7 @@ int front(Queue* q){
 int pop(Queue* q){
     if(empty(q)) return 0;
     q->head += 1;
+    q->head %= q->size;
     q->count -= 1;
     return 1;
 }
